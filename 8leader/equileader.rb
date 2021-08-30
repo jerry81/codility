@@ -57,7 +57,7 @@ def getLeader(a)
         return -1
     end
     cand = stack[0]
-    idx = -1
+    idx = nil
     count = 0
     a.each_with_index { |item, index|
         if item == cand
@@ -65,7 +65,7 @@ def getLeader(a)
           idx = index
         end
       }
-    return count > (a.size / 2) ? cand : -1
+    return count > (a.size / 2) ? cand : nil
 end
 
 def solution(a)
@@ -76,8 +76,14 @@ def solution(a)
       firsthalf = a[0..pivot]
       lasthalf = a[pivot+1..last]
       fl = getLeader(firsthalf)
+      if fl == nil
+        next
+      end
       sl = getLeader(lasthalf)
-      if fl == sl and fl >=0 and sl >= 0
+      if sl == nil
+        next
+      end
+      if fl == sl
         count +=1
       end
     end
