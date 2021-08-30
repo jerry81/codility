@@ -75,7 +75,9 @@ def solution(a)
     for pivot in 0..(last-1)
       firsthalf = a[0..pivot]
       lasthalf = a[pivot+1..last]
-      if getLeader(firsthalf) == getLeader(lasthalf)
+      fl = getLeader(firsthalf)
+      sl = getLeader(lasthalf)
+      if fl == sl and fl >=0 and sl >= 0
         count +=1
       end
     end
@@ -83,3 +85,5 @@ def solution(a)
 end 
 
 puts "expect 2 #{solution([4,3,4,4,4,2])}"
+
+puts "expect 0 #{solution([1, 2, 3, 4, 5])}"
