@@ -69,7 +69,17 @@ def getLeader(a)
 end
 
 def solution(a)
-    return getLeader(a)
+    # cut the array 
+    count = 0
+    last = a.size - 1
+    for pivot in 0..(last-1)
+      firsthalf = a[0..pivot]
+      lasthalf = a[pivot+1..last]
+      if getLeader(firsthalf) == getLeader(lasthalf)
+        count +=1
+      end
+    end
+    return count
 end 
 
 puts "expect 2 #{solution([4,3,4,4,4,2])}"
