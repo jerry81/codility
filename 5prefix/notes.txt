@@ -1,0 +1,3 @@
+technique: 
+store sum from 0 to n at each index of array of numbers
+use as lookup table

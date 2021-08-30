@@ -1,0 +1,59 @@
+frequently order by 
+- numerical order
+- alphabetical order 
+
+Selection sort
+
+overview: find minimum, swap with first item, repeat on remaining items
+
+pseudo code 
+
+for each item 
+  first item is min 
+  for remaining items 
+    find min item less than first item in remaining items 
+  swap min item less than first item with first item (could swap with itself
+  )  
+
+complexity n^2
+
+Counting sort
+
+overview - get range of numbers first, build counting map/array, iterate this map/array and build the sorted array
+
+pseudo code
+
+(get range)
+for each item
+  search for min and max 
+(build lookup array)
+for each item in range(min, max)
+  lookup[item] = []
+for each index
+  lookup[A[index]] += index 
+for each arr in lookup 
+  add arr to sorted
+
+complexity n + k
+
+Merge sort 
+
+overview - merge each item in array into larger sorted chunks, then merge the sorted chunks into larger chunks until done 
+
+pseudocode
+given A 
+for chunks of 2 [a,b] until last item 
+if b < a swap a, b
+for those chunks of 2 A=[a,b] B=[c,d]
+while True 
+  if (!A.length && !B.length)  
+    add sorted to pool 
+  if (A.length)
+    sorted.push(...A)
+  else if (B.length)
+    sorted.push(...B)
+  else if (A[0] < B[0]) sorted.push[A.shift()] else sorted.push(B.shift())
+
+complexity n log n 
+
+python [].sort() is n log n 
