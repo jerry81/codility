@@ -25,8 +25,8 @@ the result will be an integer within the range [−2,147,483,648..2,147,483,647]
 =end
 
 def solution(a)
-    curmax = 0
-    overallmax = 0
+    curmax = Integer::MIN
+    overallmax = Integer::MIN
     a.each{ |cur|
       sum = curmax + cur
       curmax = [cur, sum].max
