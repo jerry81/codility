@@ -48,11 +48,25 @@ def solution(a)
   # condition for "intersecting"
   # either endpoint is between the min and max of another
   for x in 0..memo.length-2 do 
-    for y in x..memo.length-1 do 
-        puts "x is #{x} and y is #{y}"
+    for y in x+1..memo.length-1 do 
+        bounds1 = memo[x]
+        bounds2 = memo[y]
+        puts "x is #{x} y is #{y}"
+        firstMinInSecond = bounds1[:min] >= bounds2[:min] and bounds1[:min] <= bounds2[:max]  
+        firstMaxInSecond = bounds1[:max] >= bounds2[:min] and bounds1[:max] <= bounds2[:max] 
+        secondMinInFirst = bounds2[:min] >= bounds2[:min] and bounds2[:max] >= bounds1[:max]
+        secondMaxInFirst = bounds2[:max] <= bounds1[:max] and bounds2[:min] >= bounds1[:min]
+        firstInSecond = firstMinInSecond and firstMaxInSecond
+        secondInFirst = secondMinInFirst and secondMaxInFirst
+        if x == 0 and y == 3
+            puts "first in second #{firstInSecond} second in first #{secondInFirst}"
+        end
+        if firstInSecond or secondInFirst
+            count += 1
+        end 
     end
   end
-
+  count
 end
 
 puts "expect 11 - answer #{solution([1, 5, 2, 1, 4, 0])} ";
