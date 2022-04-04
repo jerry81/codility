@@ -77,3 +77,6 @@ end
 puts "expect 11 - answer #{solution([1, 5, 2, 1, 4, 0])} ";
 
 # lesson learned and and && behave differently - forums don't recommend using the word version 
+
+# result:
+# 50% timeout errors,  O(n^2)
