@@ -51,22 +51,22 @@ def solution(a)
     for y in x+1..memo.length-1 do 
         bounds1 = memo[x]
         bounds2 = memo[y]
-        puts "x is #{x} y is #{y}"
         firstMinInSecond = bounds1[:min] >= bounds2[:min] && bounds1[:min] <= bounds2[:max]  
         firstMaxInSecond = bounds1[:max] >= bounds2[:min] && bounds1[:max] <= bounds2[:max] 
         secondMinInFirst = bounds2[:min] >= bounds1[:min] && bounds2[:min] <= bounds1[:max]
         secondMaxInFirst = bounds2[:max] >= bounds1[:min] && bounds2[:max] <= bounds1[:max]
-        firstInSecond = firstMinInSecond && firstMaxInSecond
-        secondInFirst = secondMinInFirst && secondMaxInFirst
-        if x == 0 and y == 3
-            puts "bounds1[min] bounds2[min] bounds1[max] bounds2[max] #{bounds1[:min]} #{bounds2[:min]} #{bounds1[:max]} #{bounds2[:max]}"
-            puts "first half #{bounds2[:min] >= bounds1[:min]}"
-            puts "second half #{bounds2[:min] <= bounds1[:max]}"
-            puts "secondMinInFirst #{secondMinInFirst}"
-            puts "secondMaxInFirst #{secondMaxInFirst}"
-            puts "first in second #{firstInSecond} second in first #{secondInFirst}"
+        firstInSecond = firstMinInSecond || firstMaxInSecond
+        secondInFirst = secondMinInFirst || secondMaxInFirst
+        if x==0 && y==2
+            puts "1 in 2 #{firstInSecond}"
+            puts "2 in 1 #{secondInFirst}"
+            # first in second is wrong
+            puts "firstMinInSEcond2nd #{bounds1[:min]} is less than or equal to #{bounds2[:max]} result #{bounds1[:min] <= bounds2[:max]}"
+            puts "firstMinInSecond1st #{bounds1[:min]} is gte #{bounds2[:min]} result #{bounds1[:min] >= bounds2[:min]}"
         end
-        if firstInSecond or secondInFirst
+        puts "comparing #{x} and #{y}"
+        puts "result is #{firstInSecond || secondInFirst}"
+        if firstInSecond || secondInFirst
             count += 1
         end 
     end
