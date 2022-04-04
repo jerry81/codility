@@ -52,13 +52,18 @@ def solution(a)
         bounds1 = memo[x]
         bounds2 = memo[y]
         puts "x is #{x} y is #{y}"
-        firstMinInSecond = bounds1[:min] >= bounds2[:min] and bounds1[:min] <= bounds2[:max]  
-        firstMaxInSecond = bounds1[:max] >= bounds2[:min] and bounds1[:max] <= bounds2[:max] 
-        secondMinInFirst = bounds2[:min] >= bounds2[:min] and bounds2[:max] >= bounds1[:max]
-        secondMaxInFirst = bounds2[:max] <= bounds1[:max] and bounds2[:min] >= bounds1[:min]
-        firstInSecond = firstMinInSecond and firstMaxInSecond
-        secondInFirst = secondMinInFirst and secondMaxInFirst
+        firstMinInSecond = bounds1[:min] >= bounds2[:min] && bounds1[:min] <= bounds2[:max]  
+        firstMaxInSecond = bounds1[:max] >= bounds2[:min] && bounds1[:max] <= bounds2[:max] 
+        secondMinInFirst = bounds2[:min] >= bounds1[:min] && bounds2[:min] <= bounds1[:max]
+        secondMaxInFirst = bounds2[:max] >= bounds1[:min] && bounds2[:max] <= bounds1[:max]
+        firstInSecond = firstMinInSecond && firstMaxInSecond
+        secondInFirst = secondMinInFirst && secondMaxInFirst
         if x == 0 and y == 3
+            puts "bounds1[min] bounds2[min] bounds1[max] bounds2[max] #{bounds1[:min]} #{bounds2[:min]} #{bounds1[:max]} #{bounds2[:max]}"
+            puts "first half #{bounds2[:min] >= bounds1[:min]}"
+            puts "second half #{bounds2[:min] <= bounds1[:max]}"
+            puts "secondMinInFirst #{secondMinInFirst}"
+            puts "secondMaxInFirst #{secondMaxInFirst}"
             puts "first in second #{firstInSecond} second in first #{secondInFirst}"
         end
         if firstInSecond or secondInFirst
@@ -70,3 +75,5 @@ def solution(a)
 end
 
 puts "expect 11 - answer #{solution([1, 5, 2, 1, 4, 0])} ";
+
+# lesson learned and and && behave differently - forums don't recommend using the word version 
