@@ -35,10 +35,10 @@ def getIntSides(area)
         if i**2 > area
             break
         end
-        if i % area == 0
+        if area % i == 0
             map = {}
-            map[a] = i 
-            map[b] = area/i 
+            map[:a] = i 
+            map[:b] = area/i 
             result << map # add to array operator 
         end
     end
@@ -46,6 +46,11 @@ def getIntSides(area)
 end
 
 def solution(area)
+    sides = getIntSides(area)
+    perimeters = sides.map { | item | 
+        perimeter item[:a], item[:b]
+    }
+    return perimeters.min
 end
 
 puts "expect [{1,30}, {2,15}, {3, 10}, {5,6}] #{getIntSides(30)}"
