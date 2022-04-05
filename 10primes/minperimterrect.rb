@@ -55,3 +55,9 @@ end
 
 puts "expect [{1,30}, {2,15}, {3, 10}, {5,6}] #{getIntSides(30)}"
 puts "expect 22 #{solution(30)}"
+
+=begin
+
+results: perfect
+
+=end 
