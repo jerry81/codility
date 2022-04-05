@@ -81,4 +81,7 @@ got 16 expected 15
 N=1,000,000,000, N=MAX_INT, N=2147,395,600✘WRONG ANSWER
 got 136 expected 135
 
+
+results after adding the square case 
+    - 100%
 =end
