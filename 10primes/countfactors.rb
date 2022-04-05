@@ -18,6 +18,16 @@ N is an integer within the range [1..2,147,483,647].
 =end
 
 def solution(input)
+    count = 0
+    for i in 1..input do
+        if i**2 > input
+            return count
+        end
+        if input % i == 0
+            count += 2
+        end
+    end
+    count 
 end
 
 puts "expect 8 : #{solution(24)}"
