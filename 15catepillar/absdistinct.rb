@@ -51,12 +51,19 @@ def solution(a)
     # applying caterpillar?
     # step until reach 0 or positive number
     # now we have two caterpillars
-    idx = setup(a)
-    puts "idx is #{idx}"
+    total = 0
+    starting = setup(a)
+    zeroCount = starting[:zeros]
+    idx = starting[:idx]
+    if zeroCount > 0
+        total += 1
+    end
     b1 = 0
-    b2 = idx
-    f1 = 0
-    f2 = idx 
+    b2 = idx - zeroCount
+    f1 = idx - zeroCount - 1
+    f2 = a.length - 1
+    puts "sub1 is #{a[b1..f1]}" 
+    total 
 end
 
 puts "expect 5 #{solution([-5,-3,-1,0,3,6])}"
