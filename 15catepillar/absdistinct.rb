@@ -110,10 +110,15 @@ puts "expect 1 #{solution([-2,-2])}"
 puts "expect 9 #{solution([-5, -4, -3, -2, -1, 6, 7, 8, 9])}"
 
 puts "expect 11 #{solution([0, 1, 2, 3, 4, 5, 6, 7, 100, 100, 200, 3000])}"
+
+puts "expect 3, #{solution( [-2147483648, -1, 0, 1] ) }"
 # 
 # puts "expect 7 #{solution([-100, -5, -4, -3, -2, -1, -1, 0, 0])}"
 =begin
   
 result: 21% overall, performance - 0, correctnes 27%
+
+trial 3 results: 92% overall, correctness 90%, perf 100%
     
+
 =end
