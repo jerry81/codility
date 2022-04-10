@@ -35,9 +35,13 @@ array A is sorted in non-decreasing order.
 =end 
 
 def setup(a)
+    zeroCount = 0
     a.each_with_index do | x, idx | 
         if x > 0
-            return idx
+            return { :zeros=>zeroCount, :idx=>idx }
+        end
+        if x == 0
+            zeroCount+=1
         end
     end
 end
@@ -49,6 +53,10 @@ def solution(a)
     # now we have two caterpillars
     idx = setup(a)
     puts "idx is #{idx}"
+    b1 = 0
+    b2 = idx
+    f1 = 0
+    f2 = idx 
 end
 
 puts "expect 5 #{solution([-5,-3,-1,0,3,6])}"
