@@ -51,12 +51,13 @@ def solution(a)
     # applying caterpillar?
     # step until reach 0 or positive number
     # now we have two caterpillars
+    a = a.uniq
     total = 0
     starting = setup(a)
     zeroCount = starting[:zeros]
     idx = starting[:idx]
     if idx == a.length-1 || idx == 0
-        return a.length 
+        return a.length
     end
     if zeroCount > 0
         total += 1
@@ -101,6 +102,13 @@ puts "edge case 2, expect 3 #{solution([5,13,21])}"
 
 puts "expect 5 #{solution([-5,-3,-1,0,0,0,0,3,6])}"
 
+puts "expect 1 #{solution([-2,-2])}"
+
+puts "expect 9 #{solution([-5, -4, -3, -2, -1, 6, 7, 8, 9])}"
+
+puts "expect 11 #{solution([0, 1, 2, 3, 4, 5, 6, 7, 100, 100, 200, 3000])}"
+
+puts "expect 7 #{solution([-100, -5, -4, -3, -2, -1, -1, 0, 0])}"
 =begin
   
 result: 21% overall, performance - 0, correctnes 27%
