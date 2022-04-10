@@ -64,10 +64,22 @@ def solution(a)
     b2 = idx
     f1 = idx - zeroCount - 1
     # handle two edge cases, empty 
-    puts "startright #{a[b2]} startL #{a[f1]}"
-    while b2 >= 0 && f1 < a.length
-        b2 -= 1
-        f1 += 1
+    while f1 >= 0 && b2 < a.length
+        l = a[f1].abs
+        r = a[b2]
+        if l == r
+            total += 1
+            f1-=1
+            b2+=1
+        end
+        if l < r
+            f1-=1
+            total += 1
+        end
+        if r > l 
+            b2+=1
+            total += 1
+        end
     end
     # now that the array has been "split" to [-5,-3,-1] and [3,6]
     # loop
@@ -79,7 +91,6 @@ def solution(a)
     # else
     # move the positive pointer forward, total +=1
     # stop when either pointer exceeds the limit 
-
     total 
 end
 
@@ -87,3 +98,5 @@ puts "expect 5 #{solution([-5,-3,-1,0,3,6])}"
 puts "edge case, expect 3 #{solution([-5,-3,-1])}"
 
 puts "edge case 2, expect 3 #{solution([5,13,21])}"
+
+puts "expect 5 #{solution([-5,-3,-1,0,0,0,0,3,6])}"
