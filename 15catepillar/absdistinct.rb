@@ -77,10 +77,13 @@ def solution(a)
             f1-=1
             total += 1
         end
-        if r > l 
+        if r < l 
             b2+=1
             total += 1
         end
+    end
+    if f1 == -1
+        total += a.length - b2
     end
     # now that the array has been "split" to [-5,-3,-1] and [3,6]
     # loop
@@ -107,8 +110,8 @@ puts "expect 1 #{solution([-2,-2])}"
 puts "expect 9 #{solution([-5, -4, -3, -2, -1, 6, 7, 8, 9])}"
 
 puts "expect 11 #{solution([0, 1, 2, 3, 4, 5, 6, 7, 100, 100, 200, 3000])}"
-
-puts "expect 7 #{solution([-100, -5, -4, -3, -2, -1, -1, 0, 0])}"
+# 
+# puts "expect 7 #{solution([-100, -5, -4, -3, -2, -1, -1, 0, 0])}"
 =begin
   
 result: 21% overall, performance - 0, correctnes 27%
