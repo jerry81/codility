@@ -37,7 +37,7 @@ array A is sorted in non-decreasing order.
 def setup(a)
     zeroCount = 0
     a.each_with_index do | x, idx | 
-        if x > 0
+        if x > 0 || idx == a.length-1
             return { :zeros=>zeroCount, :idx=>idx }
         end
         if x == 0
@@ -58,11 +58,14 @@ def solution(a)
     if zeroCount > 0
         total += 1
     end
-    b1 = 0
     b2 = idx
     f1 = idx - zeroCount - 1
-    f2 = a.length - 1
-    # idea
+    # handle two edge cases, empty 
+    puts "startright #{a[b2]} startL #{a[f1]}"
+    while b2 >= 0 && f1 < a.length
+        b2 -= 1
+        f1 += 1
+    end
     # now that the array has been "split" to [-5,-3,-1] and [3,6]
     # loop
     # starting from items closest to zero (-1, 3)
@@ -73,7 +76,9 @@ def solution(a)
     # else
     # move the positive pointer forward, total +=1
     # stop when either pointer exceeds the limit 
+
     total 
 end
 
 puts "expect 5 #{solution([-5,-3,-1,0,3,6])}"
+puts "edge case, expect 3 #{solution([-5,-3,-1])}"
