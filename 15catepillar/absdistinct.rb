@@ -59,10 +59,20 @@ def solution(a)
         total += 1
     end
     b1 = 0
-    b2 = idx - zeroCount
+    b2 = idx
     f1 = idx - zeroCount - 1
     f2 = a.length - 1
-    puts "sub1 is #{a[b1..f1]}" 
+    # idea
+    # now that the array has been "split" to [-5,-3,-1] and [3,6]
+    # loop
+    # starting from items closest to zero (-1, 3)
+    # if 1 == 3
+    # total += 1, move both pointers
+    # if 1 < 3
+    # move the negative pointer back, total += 1
+    # else
+    # move the positive pointer forward, total +=1
+    # stop when either pointer exceeds the limit 
     total 
 end
 
