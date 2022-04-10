@@ -100,3 +100,9 @@ puts "edge case, expect 3 #{solution([-5,-3,-1])}"
 puts "edge case 2, expect 3 #{solution([5,13,21])}"
 
 puts "expect 5 #{solution([-5,-3,-1,0,0,0,0,3,6])}"
+
+=begin
+  
+result: 21% overall, performance - 0, correctnes 27%
+    
+=end
