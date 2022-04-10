@@ -56,7 +56,7 @@ def solution(a)
     starting = setup(a)
     zeroCount = starting[:zeros]
     idx = starting[:idx]
-    if idx == a.length-1 || idx == 0
+    if idx == a.length || idx == 0
         return a.length
     end
     if zeroCount > 0
@@ -84,6 +84,9 @@ def solution(a)
     end
     if f1 == -1
         total += a.length - b2
+    end
+    if b2 == a.length 
+        total += f1 + 1
     end
     # now that the array has been "split" to [-5,-3,-1] and [3,6]
     # loop
