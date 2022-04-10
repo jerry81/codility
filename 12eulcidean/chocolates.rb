@@ -50,3 +50,8 @@ def solution(n, m)
 end
   
 puts "expect 5 #{solution(10,4)}"
+
+# results
+# correctness 100%
+# performance 0% - 3 timeouts, one stack overflow 
+# complexity detected as O(N+M)
