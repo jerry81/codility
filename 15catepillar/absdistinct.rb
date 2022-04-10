@@ -55,6 +55,9 @@ def solution(a)
     starting = setup(a)
     zeroCount = starting[:zeros]
     idx = starting[:idx]
+    if idx == a.length-1 || idx == 0
+        return a.length 
+    end
     if zeroCount > 0
         total += 1
     end
@@ -82,3 +85,5 @@ end
 
 puts "expect 5 #{solution([-5,-3,-1,0,3,6])}"
 puts "edge case, expect 3 #{solution([-5,-3,-1])}"
+
+puts "edge case 2, expect 3 #{solution([5,13,21])}"
