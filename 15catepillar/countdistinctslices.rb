@@ -46,11 +46,15 @@ def solution(m,a)
     if a.length == 1
         return 1
     end
-    head = 0
-    tail = 0
-    for i in head..a.length-1
-        puts "i is #{i}"
+    count = 0
+    for i in 0..a.length-1
+        for j in i..a.length-1
+          if isDistinctArray(a[i..j])
+            count+=1
+          end
+        end
     end
+    count
 end
 
 puts "expect 9 #{solution(6, [3,4,5,5,2])}"
