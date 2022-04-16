@@ -51,6 +51,8 @@ def solution(m,a)
         for j in i..a.length-1
           if isDistinctArray(a[i..j])
             count+=1
+          else 
+            break
           end
         end
     end
@@ -70,4 +72,9 @@ results -
 0% performance 
 time is O(N**3)
 didn't technically use the caterpillar  s
+
+second submission - after adding a break statement
+
+bumps the performance up to 40%
+complexity is now O(N*(N+M))
 =end 
