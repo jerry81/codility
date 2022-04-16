@@ -78,3 +78,7 @@ second submission - after adding a break statement
 bumps the performance up to 40%
 complexity is now O(N*(N+M))
 =end 
+
+# more ideas for optimization 
+# if 0,1,2 is distinct then 1,2 is distinct also
+# currently the algorithm will check 1,2 redundantly 
