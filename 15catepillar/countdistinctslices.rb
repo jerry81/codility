@@ -61,3 +61,13 @@ puts "expect 9 #{solution(6, [3,4,5,5,2])}"
 puts "expect 1 #{solution(12, [5])}"
 puts "expect true #{isDistinctArray([2,3])}"
 puts "expect false #{isDistinctArray([3,3])}"
+
+=begin
+
+results -   
+50% overall
+100% correctness
+0% performance 
+time is O(N**3)
+didn't technically use the caterpillar  s
+=end 
