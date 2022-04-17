@@ -34,9 +34,10 @@ def isTriangular(a,b,c)
 #     A[P] + A[Q] > A[R],
 # A[Q] + A[R] > A[P],
 # A[R] + A[P] > A[Q].
-  case1 = a + b > c
-  case2 = b + c > a 
-  case3 = c + a > b 
+  case1 = (a + b) > c
+  case2 = (b + c) > a 
+  case3 = (c + a) > b 
+  return case1 && case2 && case3
 end
 
 def solution(a)
@@ -44,4 +45,5 @@ end
 
 puts "expect 4 #{solution([10, 2, 5, 1, 8, 12])}"
 
-puts "expect true #{isTriangular()}"
+puts "expect true #{isTriangular(10,5,8)}"
+puts "expect false #{isTriangular(10,2,5)}"
