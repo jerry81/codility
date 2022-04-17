@@ -61,4 +61,14 @@ end
 puts "expect 4 #{solution([10, 2, 5, 1, 8, 12])}"
 
 puts "expect true #{isTriangular(10,5,8)}"
-puts "expect false #{isTriangular(10,2,5)}"
+puts "expect false #{isTria
+
+=begin
+
+initial result
+63% overall
+100% correctness
+0% performance 
+O N^3 complexity 
+
+=end 
