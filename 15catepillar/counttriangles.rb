@@ -45,16 +45,17 @@ def solution(a)
   # 0,1,2
   # 0,2,3
   # 0,3,4
-  x=0
-  y=1
-  z=2 
-  for i in x..a.length - 3 do
-    for j in y..a.length - 2 do 
-        for k in z..a.length - 1 do 
+  count = 0
+  for i in 0..a.length - 3 do
+    for j in i+1..a.length - 2 do 
+        for k in j+1..a.length - 1 do 
+            if isTriangular(a[i],a[j],a[k])
+                count+=1
+            end
         end
     end
-end
-puts "syntax ok"
+  end
+  count
 end
 
 puts "expect 4 #{solution([10, 2, 5, 1, 8, 12])}"
