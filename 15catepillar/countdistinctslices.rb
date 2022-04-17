@@ -82,4 +82,29 @@ complexity is now O(N*(N+M))
 # more ideas for optimization 
 # if 0,1,2 is distinct then 1,2 is distinct also
 # currently the algorithm will check 1,2 redundantly 
-# if 0,1,2,3,4,5 are distinct then 1,2,3,4,5 2,3,4,5 3,4,5 4,5, 2,3,4 3,4,5 2,3 and 4,5 are all distinct also
+#
+# full example
+# given 0,1,2,3,4,5,2,3,7,7,8
+# if 0,1,2,3,4,5 are distinct then
+=begin
+ 1,2,3,4,5 
+ 2,3,4,5 
+ 4,5, 
+ 2,3,4 
+ 3,4,5 
+ 2,3
+4,5 are all distinct also
+
+and the next item to check is 
+2,3,4,5,2 not distnict
+count 2,3,4  and 2,3 automatically (tail-head) 4-2 = 2 
+
+= end 
+=begin
+
+pseudocode would be something like 
+while distinct and can push tail back
+    count++ and tail + 1
+ 1,2,3,4,5   
+
+=end
