@@ -41,6 +41,20 @@ def isTriangular(a,b,c)
 end
 
 def solution(a)
+  # naive solution try every single permutation 
+  # 0,1,2
+  # 0,2,3
+  # 0,3,4
+  x=0
+  y=1
+  z=2 
+  for i in x..a.length - 3 do
+    for j in y..a.length - 2 do 
+        for k in z..a.length - 1 do 
+        end
+    end
+end
+puts "syntax ok"
 end
 
 puts "expect 4 #{solution([10, 2, 5, 1, 8, 12])}"
