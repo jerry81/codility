@@ -44,7 +44,15 @@ $positionMap = {}
 # accessing non-existent key gives nil 
 
 def overlapFast(a,b)
-    return $positionMap[a] != nil || $positionMap[b] != nil
+    if $positionMap[a] != nil || $positionMap[b] != nil
+        return true
+    end
+    for x in a..b
+        if $positionMap[x] != nil 
+            return true
+        end
+    end
+    false 
 end
 
 def updatePositionMap(a,b)
@@ -73,6 +81,7 @@ def solution(a,b)
         itema = a[item[:idx]]
         itemb = b[item[:idx]]
         if overlapFast(itema, itemb)
+
             next
         end
         count += 1
@@ -98,6 +107,11 @@ $positionMap = {}
 $distArr = []
 testa = [10, 4, 3, 2, 0] 
 testb = [30, 40, 48, 49, 50]
+# 10 -> 30
+# 4 -> 40
+# 3 -> 48
+# 2 -> 49
+# 0 -> 50 
 puts "expect 1 #{solution(testa,testb)}"
 $positionMap = {}
 $distArr = []
