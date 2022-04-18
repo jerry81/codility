@@ -72,12 +72,9 @@ def solution(a,b)
     sorted.each do | item | 
         itema = a[item[:idx]]
         itemb = b[item[:idx]]
-        puts "positionMap is #{$positionMap}"
         if overlapFast(itema, itemb)
-            puts "overlap detected for #{item}"
             next
         end
-        puts "no overlap for #{item}"
         count += 1
         updatePositionMap(itema, itemb)
     end
