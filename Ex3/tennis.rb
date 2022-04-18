@@ -31,3 +31,7 @@ puts "expect 2 #{solution(5, 3)}"
 
 
 puts "expect 3 #{solution(10, 3)}"
+
+=begin
+    results: 100% on the first try 
+=end
