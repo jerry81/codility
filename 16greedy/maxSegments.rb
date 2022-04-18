@@ -67,8 +67,21 @@ def solution(a,b)
        len = bx-ax
        $distArr << { :idx => x, :len => len }
     end
+    count = 0
     sorted = $distArr.sort_by { |x| x[:len] }
-    sorted.each { | item | puts "item is #{item}" }
+    sorted.each do | item | 
+        itema = a[item[:idx]]
+        itemb = b[item[:idx]]
+        puts "positionMap is #{$positionMap}"
+        if overlapFast(itema, itemb)
+            puts "overlap detected for #{item}"
+            next
+        end
+        puts "no overlap for #{item}"
+        count += 1
+        updatePositionMap(itema, itemb)
+    end
+    count 
 end
 
 testa = [1,3,7,9,9]
@@ -78,6 +91,7 @@ puts "test sort #{testSort.sort_by { |x| x[:len] }}"
 puts "expect empty positionMap #{$positionMap}"
 puts "expect false #{overlapFast(1,2)}"
 updatePositionMap(0,5)
+$positionMap = {}
 puts "expect 5 items in pm #{$positionMap}"
 puts "expect true #{overlapFast(1,2)}"
 puts "expect 3 #{solution(testa, testb)}"
