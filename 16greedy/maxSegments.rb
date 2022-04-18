@@ -38,7 +38,29 @@ def overlap(a1,a2,b1,b2) # where a1 < b1 and a2 < b2 and a1 < a2
     return b1 > a2 
 end
 
+positionMap = {}
+
+# hash lesson
+# accessing non-existent key gives nil 
+
+def overlapFast(a,b)
+    return positionMap[a] || positionMap[b]
+end
+
+def updatePositionMap(a,b)
+    for x in a..b
+      positionMap[x]=true
+    end
+end
+
 def solution(a,b)
+    # greedy algorithm
+    # grab smallest segments
+    # sort array of smallest segments
+    # maintain map of covered squares 
+    for x in 0..a.length-1
+       
+    end
 end
 
 testa = [1,3,7,9,9]
