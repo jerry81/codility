@@ -46,3 +46,5 @@ def solution(e, l)
 end
 
 puts "expect 17 #{solution("10:00", "13:21")}"
+
+# result, 100% on first try 
