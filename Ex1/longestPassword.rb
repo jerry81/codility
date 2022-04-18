@@ -36,7 +36,6 @@ def isValidPassword(a)
     charArr = a.chars
     letterCount = 0
     numCount = 0
-    puts "charArr"
     charArr.each do | x |
       if isDigit x
         numCount += 1
@@ -51,7 +50,7 @@ end
 
 def solution(a)
     arr = a.split(" ")
-    maxLen = 0
+    maxLen = -1
     arr.each do | word | 
         if isValidPassword(word)
             if maxLen < word.length 
@@ -75,3 +74,13 @@ puts "expect true #{isLetter 'a'}"
 puts "expect false #{isLetter '3'}"
 
 puts "expect false #{isDigit '?'}"
+
+=begin
+results:
+correctness - just 60% 
+no perf tests  
+
+if there are no valid passwords we should return -1
+
+second submission result: 100% 
+=end
