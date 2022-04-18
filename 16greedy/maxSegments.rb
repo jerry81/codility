@@ -65,8 +65,10 @@ def solution(a,b)
        ax = a[x]
        bx = b[x]
        len = bx-ax
-       $distArr[x] = len 
+       $distArr << { :idx => x, :len => len }
     end
+    sorted = $distArr.sort_by { |x| x[:len] }
+    sorted.each { | item | puts "item is #{item}" }
 end
 
 testa = [1,3,7,9,9]
