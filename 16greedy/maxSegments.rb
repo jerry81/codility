@@ -125,5 +125,11 @@ results of first submission:
 overall 50%
 correctness just 80% - small_all_overlapping test case 
 perf 20% - with one wrong answer, 3 timeouts
+
+second submission results:
+
+- overall 60%
+- correctness 100%
+- performance 20% - (note the first test still fails due to correctness (expect 27, got 26))
     
 =end 
