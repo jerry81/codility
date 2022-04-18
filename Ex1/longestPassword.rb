@@ -24,11 +24,54 @@ string S consists only of printable ASCII characters and spaces.
 In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
 =end 
 
+def isDigit(c) 
+    c =~ /\d/ ? true : false
+end
+
+def isLetter(c) 
+    c =~ /[A-Za-z]/ ? true : false
+end
+
+def isValidPassword(a) 
+    charArr = a.chars
+    letterCount = 0
+    numCount = 0
+    puts "charArr"
+    charArr.each do | x |
+      if isDigit x
+        numCount += 1
+      elsif isLetter x 
+        letterCount += 1
+      else 
+        return false 
+      end
+    end
+    numCount % 2 == 1 && letterCount % 2 == 0 
+end
+
 def solution(a)
     arr = a.split(" ")
-    puts "words are #{arr}"
+    maxLen = 0
+    arr.each do | word | 
+        if isValidPassword(word)
+            if maxLen < word.length 
+                maxLen = word.length
+            end
+        end
+    end
+    maxLen
 end
 
 
 test1 = "test 5 a0A pass007 ?xy1"
 puts "expect 7 #{solution(test1)}"
+
+puts "expect true #{isDigit '3'}"
+
+puts "expect false #{isDigit 'a'}"
+
+puts "expect true #{isLetter 'a'}"
+
+puts "expect false #{isLetter '3'}"
+
+puts "expect false #{isDigit '?'}"
