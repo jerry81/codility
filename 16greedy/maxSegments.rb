@@ -53,18 +53,26 @@ def updatePositionMap(a,b)
     end
 end
 
+$distArr = []
+
 def solution(a,b)
     # greedy algorithm
     # grab smallest segments
     # sort array of smallest segments
     # maintain map of covered squares 
+    # pop the smallest segment stack and add if not overlapping 
     for x in 0..a.length-1
-       
+       ax = a[x]
+       bx = b[x]
+       len = bx-ax
+       $distArr[x] = len 
     end
 end
 
 testa = [1,3,7,9,9]
 testb = [5,6,8,9,10]
+testSort = [{:len => 5, :idx => 0 }, {:idx => 1, :len => 2}, {:idx => 2, :len => 3}]
+puts "test sort #{testSort.sort_by { |x| x[:len] }}"
 puts "expect empty positionMap #{$positionMap}"
 puts "expect false #{overlapFast(1,2)}"
 updatePositionMap(0,5)
