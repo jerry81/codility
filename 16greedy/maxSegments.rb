@@ -34,7 +34,15 @@ A[I] ≤ B[I], for each I (0 ≤ I < N);
 B[K] ≤ B[K + 1], for each K (0 ≤ K < N − 1).
 =end
 
+def overlap(a1,a2,b1,b2) # where a1 < b1 and a2 < b2 and a1 < a2
+    return b1 > a2 
+end
+
 def solution(a,b)
 end
 
-puts "expect 3 #{solution([1,3,7,9,9], [5,6,8,9,10])}"
+testa = [1,3,7,9,9]
+testb = [5,6,8,9,10]
+puts "expect 3 #{solution(testa, testb)}"
+puts "expect true #{overlap(testa[0], testa[1], testb[0], testb[1])}"
+puts "expect false #{overlap(testa[0], testa[2], testb[0], testb[2])}"
