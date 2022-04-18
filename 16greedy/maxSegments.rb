@@ -38,18 +38,18 @@ def overlap(a1,a2,b1,b2) # where a1 < b1 and a2 < b2 and a1 < a2
     return b1 > a2 
 end
 
-positionMap = {}
+$positionMap = {}
 
 # hash lesson
 # accessing non-existent key gives nil 
 
 def overlapFast(a,b)
-    return positionMap[a] || positionMap[b]
+    return $positionMap[a] != nil || $positionMap[b] != nil
 end
 
 def updatePositionMap(a,b)
     for x in a..b
-      positionMap[x]=true
+      $positionMap[x]=true
     end
 end
 
@@ -65,6 +65,11 @@ end
 
 testa = [1,3,7,9,9]
 testb = [5,6,8,9,10]
+puts "expect empty positionMap #{$positionMap}"
+puts "expect false #{overlapFast(1,2)}"
+updatePositionMap(0,5)
+puts "expect 5 items in pm #{$positionMap}"
+puts "expect true #{overlapFast(1,2)}"
 puts "expect 3 #{solution(testa, testb)}"
 puts "expect true #{overlap(testa[0], testa[1], testb[0], testb[1])}"
 puts "expect false #{overlap(testa[0], testa[2], testb[0], testb[2])}"
