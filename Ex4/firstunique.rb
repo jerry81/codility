@@ -66,3 +66,8 @@ end
 puts "expect 4 #{solution([1, 4, 3, 3, 1, 2])}"
 
 puts "expect -1 #{solution([6,4,4,6])}"
+
+=begin
+first result: 
+100% everything
+=end
