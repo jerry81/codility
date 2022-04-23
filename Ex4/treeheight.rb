@@ -48,14 +48,14 @@ def dfsheight(t)
     end
 
     if t.l.nil? 
-        return dfsheight(t.r)
+        return 1 + dfsheight(t.r)
     end
 
     if t.r.nil?
-        return dfsheight(t.l)
+        return 1 + dfsheight(t.l)
     end
 
-    [dfsheight(t.l), dfsheight(t.r)].max
+    1 + [dfsheight(t.l), dfsheight(t.r)].max
 end
 
 def solution(t)
