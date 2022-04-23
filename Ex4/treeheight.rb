@@ -87,3 +87,7 @@ tree3.l = tree6
 # tree6.l = None 
 # tree6.r = None 
 puts "expect 2 #{solution(tree1)}"
+
+=begin
+ results of tree problem    
+=end
