@@ -42,8 +42,48 @@ class Tree
     attr_accessor :x, :l, :r
 end
 
+def dfsheight(t)
+    if t.l.nil? && t.r.nil?
+        return 0
+    end
 
-def solution(t)
+    if t.l.nil? 
+        return dfsheight(t.r)
+    end
+
+    if t.r.nil?
+        return dfsheight(t.l)
+    end
+
+    [dfsheight(t.l), dfsheight(t.r)].max
 end
 
+def solution(t)
+    dfsheight(t)
+end
+
+tree1 = Tree.new
+tree1.x = 5 
+tree2 = Tree.new 
+tree2.x = 3
+tree3 = Tree.new
+tree3.x = 10
+tree4 = Tree.new 
+tree4.x = 20
+tree5 = Tree.new 
+tree5.x = 21
+tree6 = Tree.new 
+tree6.x = 1
+tree1.l = tree2
+tree1.r = tree3 
+tree2.l=tree4 
+tree2.r = tree5 
+tree3.l = tree6 
+# tree3.r = None 
+# tree4.l = None 
+# tree4.r = None 
+# tree5.l = None 
+# tree5.r = None 
+# tree6.l = None 
+# tree6.r = None 
 puts "expect 2 #{solution(tree1)}"
