@@ -25,3 +25,6 @@ create table elements (v integer);
 		insert into elements (v) values (3); 
 		SELECT SUM (v) as total from elements;
         
+/* result
+100% 
+*/
