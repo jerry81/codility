@@ -45,3 +45,7 @@ puts "expect 3 #{solution("racecar")}"
 puts "expect -1 #{solution("aa")}"
 
 puts "expect -1 #{solution("abc")}"
+
+=begin 
+result 100% 
+=end
