@@ -29,7 +29,13 @@ def solution(a)
         return -1
     end
 
-    
+    reversed = a.reverse
+    # <=> this is spaceship notation - returns 0 if equal, -1 if l < r, 1 if l > r 
+    if reversed != a
+        return -1
+    end
+
+    (a.length / 2).floor
 end
 
 puts "expect 0 #{solution("x")}"
@@ -38,4 +44,4 @@ puts "expect 3 #{solution("racecar")}"
 
 puts "expect -1 #{solution("aa")}"
 
-puts "expect -1 "{solution("abc") }"
+puts "expect -1 #{solution("abc")}"
