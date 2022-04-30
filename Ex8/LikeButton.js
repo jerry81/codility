@@ -3,9 +3,12 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'like-button',
     template: `
-        <h2>
-            Like button
-        </h2>
+        <button 
+          class="like-button"
+          (class.liked)="liked"
+        >
+            Like | <span (click)="like()" class="likes-counter">{{initialCount}}</span>
+        </button>
     `,
     styles: [`
         .like-button {
@@ -23,4 +26,15 @@ import { Component } from '@angular/core';
 
 export class LikeButtonComponent {
     public initialCount = 100;
+    public liked = false
+
+    like(): void {
+
+        if (this.liked) {
+          this.initialCount--
+        } else {
+          this.initialCount++
+        } 
+        this.liked = !this.liked
+    }
 }
