@@ -56,3 +56,5 @@ def solution(a)
 end
 
 puts "expect 3 #{solution([2,2,1,0,1])}"
+
+# result 100%
