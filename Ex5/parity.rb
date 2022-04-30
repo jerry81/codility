@@ -35,3 +35,5 @@ puts "expect 3 #{solution(24)}"
 # failed cases below
 
 puts "expect 0 #{solution(1)}"
+
+# result 2 - 100%
