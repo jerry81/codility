@@ -4,10 +4,11 @@ import { Component } from '@angular/core';
     selector: 'like-button',
     template: `
         <button 
+          (click)="like()" 
           class="like-button"
           [class.liked]="liked"
         >
-            Like | <span (click)="like()" class="likes-counter">{{initialCount}}</span>
+            Like | <span class="likes-counter">{{initialCount}}</span>
         </button>
     `,
     styles: [`
@@ -29,7 +30,6 @@ export class LikeButtonComponent {
     public liked = false
 
     like(): void {
-
         if (this.liked) {
           this.initialCount--
         } else {
