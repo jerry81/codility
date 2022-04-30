@@ -38,3 +38,5 @@ export class LikeButtonComponent {
         this.liked = !this.liked
     }
 }
+
+/* result 100% */
