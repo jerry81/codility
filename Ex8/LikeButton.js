@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     template: `
         <button 
           class="like-button"
-          (class.liked)="liked"
+          [class.liked]="liked"
         >
             Like | <span (click)="like()" class="likes-counter">{{initialCount}}</span>
         </button>
