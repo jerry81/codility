@@ -20,12 +20,18 @@ In your solution, focus on correctness. The performance of your solution will no
 def solution(n)
     sqrt = Math.sqrt(n)
     ceil = sqrt.ceil
-    ceil.step(1,-1) do |item|
+    ceil.step(0,-1) do |item|
       cur = 2 ** item
       if n % cur == 0
         return item 
       end
     end
+    0
 end
 
 puts "expect 3 #{solution(24)}"
+
+# result 1 - 50% wrong answer for 
+# failed cases below
+
+puts "expect 0 #{solution(1)}"
