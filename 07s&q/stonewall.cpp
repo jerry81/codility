@@ -43,19 +43,20 @@ int solution(vector<int> &H) {
 
     int t = stk.top();
     if (i < t) {
-      while (!stk.empty() || i >= stk.top()) {
+      while (!stk.empty() && i < stk.top()) {
         stk.pop();
       }
       if (stk.empty()) {
         stk.push(i);
-        count++;
       }
+      count++;
       continue;
     }
     if (i == t) continue;
 
     // implicit (i > t)
     stk.push(i);
+    count++;
   }
   return count;
 }
