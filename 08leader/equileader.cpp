@@ -47,6 +47,7 @@ each element of array A is an integer within the range [−1,000,000,000..1,000,
 
 #include <vector>
 #include <stack>
+#include <iostream>
 
 using namespace std;
 
@@ -55,7 +56,7 @@ int getLeader(vector<int> &V, int start, int end) {
   for (int i = start; i < end; ++ i) {
     int cur = V[i];
     if (stk.empty()) {
-      stk.push(i);
+      stk.push(cur);
       continue;
     }
 
@@ -70,13 +71,28 @@ int getLeader(vector<int> &V, int start, int end) {
   if (stk.empty()) return -1000000001;
 
   int cand = stk.top();
-  return cand;
+  int count = 0;
+  for (int i = start; i < end; ++i) {
+    if (V[i]==cand) count++;
+  }
+  return (count > ((end-start) / 2)) ? cand : -1000000001;
 }
 
 int solution(vector<int> &A) {
   int count = 0;
   for (int i = 0; i < A.size()-1; ++i) {
+    int l1 = getLeader(A,0,i+1);
+    int l2 = getLeader(A, i+1, A.size());
+    if (l1 < -1000000000 || l2 < -1000000000) continue;
     if (getLeader(A,0,i+1) == getLeader(A,i+1, A.size())) count++;
   }
   return count;
+}
+
+int main() {
+  vector<int> test = {};
+ // cout << "expect " << solution(test) << endl;
+
+  vector<int> testLeader = {4,3,4,4,4,2};
+  cout << "expect 4 " << getLeader(testLeader,0,1) <<endl;
 }
