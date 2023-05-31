@@ -7,14 +7,13 @@ int solution(int K, vector<int> &A) {
   int cur = 0;
   for (int i: A) {
     cur+=i;
-    if (cur > K) {
+    if (cur >= K) {
       res++;
       cur = 0;
     }
   }
   return res;
 }
-
 /*
 
 There are N ropes numbered from 0 to N − 1, whose lengths are given in an array A, lying on the floor in a line. For each I (0 ≤ I < N), the length of rope I on the line is A[I].
