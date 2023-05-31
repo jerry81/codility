@@ -59,12 +59,16 @@ int solution(vector<int> &H) {
       if (stk.empty()) {
         stk.push(i);
         count++;
+        continue;
       }
-      continue;
+
+      t = stk.top();
     }
+
     if (i == t) continue;
 
     // implicit (i > t)
+
     stk.push(i);
     count++;
   }
@@ -72,10 +76,10 @@ int solution(vector<int> &H) {
 }
 
 int main() {
-  vector<int> test1 = {1, 2, 3, 3, 2, 1};
-  cout << "expect 3 " << solution(test1) << endl;
-  vector<int> test2 = {1, 1000000000, 1};
-  cout << "expect 2 " << solution(test2) << endl;
+   vector<int> test1 = {1, 2, 3, 3, 2, 1};
+   cout << "expect 3 " << solution(test1) << endl;
+   vector<int> test2 = {1, 1000000000, 1};
+   cout << "expect 2 " << solution(test2) << endl;
   vector<int> example = {8,8,5,7,9,8,7,4,8};
   cout << "expect 7 " << solution(example) << endl;
 }
