@@ -75,7 +75,7 @@ int getLeader(vector<int> &V, int start, int end) {
 
 int solution(vector<int> &A) {
   int count = 0;
-  for (int i = 0; i < A.size(); ++i) {
+  for (int i = 0; i < A.size()-1; ++i) {
     if (getLeader(A,0,i+1) == getLeader(A,i+1, A.size())) count++;
   }
   return count;
