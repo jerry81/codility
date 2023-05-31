@@ -50,9 +50,9 @@ each element of array A is an integer within the range [−1,000,000,000..1,000,
 
 using namespace std;
 
-bool isLeader(vector<int> &V) {
+int getLeader(vector<int> &V, int start, int end) {
   stack<int> stk;
-  for (int i = 0; i < V.size(); ++ i) {
+  for (int i = start; i < end; ++ i) {
     int cur = V[i];
     if (stk.empty()) {
       stk.push(i);
@@ -67,15 +67,16 @@ bool isLeader(vector<int> &V) {
     stk.push(cur);
   }
 
-  if (stk.empty()) return false;
+  if (stk.empty()) return -1000000001;
 
   int cand = stk.top();
-  int count = 0;
-  for (int i: V) {
-    if (i==cand) count++;
-  }
-  return count > V.size()/2;
+  return cand;
 }
 
 int solution(vector<int> &A) {
+  int count = 0;
+  for (int i = 0; i < A.size(); ++i) {
+    if (getLeader(A,0,i+1) == getLeader(A,i+1, A.size())) count++;
+  }
+  return count;
 }
