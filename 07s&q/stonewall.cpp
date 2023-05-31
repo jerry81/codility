@@ -33,5 +33,29 @@ using namespace std;
 
 int solution(vector<int> &H) {
   int count = 0;
+  stack<int> stk;
+  for (int i: H) {
+    if (stk.empty()) {
+      stk.push(i);
+      count++;
+      continue;
+    }
+
+    int t = stk.top();
+    if (i < t) {
+      while (!stk.empty() || i >= stk.top()) {
+        stk.pop();
+      }
+      if (stk.empty()) {
+        stk.push(i);
+        count++;
+      }
+      continue;
+    }
+    if (i == t) continue;
+
+    // implicit (i > t)
+    stk.push(i);
+  }
   return count;
 }
