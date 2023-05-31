@@ -46,8 +46,36 @@ each element of array A is an integer within the range [−1,000,000,000..1,000,
 */
 
 #include <vector>
+#include <stack>
 
 using namespace std;
+
+bool isLeader(vector<int> &V) {
+  stack<int> stk;
+  for (int i = 0; i < V.size(); ++ i) {
+    int cur = V[i];
+    if (stk.empty()) {
+      stk.push(i);
+      continue;
+    }
+
+    if (stk.top() != cur) {
+      stk.pop();
+      continue;
+    }
+
+    stk.push(cur);
+  }
+
+  if (stk.empty()) return false;
+
+  int cand = stk.top();
+  int count = 0;
+  for (int i: V) {
+    if (i==cand) count++;
+  }
+  return count > V.size()/2;
+}
 
 int solution(vector<int> &A) {
 }
