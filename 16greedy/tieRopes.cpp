@@ -3,6 +3,16 @@
 using namespace std;
 
 int solution(int K, vector<int> &A) {
+  int res = 0;
+  int cur = 0;
+  for (int i: A) {
+    cur+=i;
+    if (cur > K) {
+      res++;
+      cur = 0;
+    }
+  }
+  return res;
 }
 
 /*
@@ -54,5 +64,9 @@ Write an efficient algorithm for the following assumptions:
 N is an integer within the range [1..100,000];
 K is an integer within the range [1..1,000,000,000];
 each element of array A is an integer within the range [1..1,000,000,000].
+
+since this is in greedy - try to do it in one pass
+- keep tying until >k met
+- keep going until all ropes used.
 
 */
