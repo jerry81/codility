@@ -46,50 +46,47 @@ each element of array A is an integer within the range [−1,000,000,000..1,000,
 */
 
 #include <vector>
-#include <stack>
 #include <iostream>
 #include <unordered_map>
-#include <queue>
 
 using namespace std;
 
 unordered_map<int, int> freq1;
 unordered_map<int, int> freq2;
-int getLeader(vector<int> &V, int start, int end) {
-  stack<int> stk;
-  for (int i = start; i < end; ++ i) {
-    int cur = V[i];
-    if (stk.empty()) {
-      stk.push(cur);
-      continue;
+int buildMap(vector<int> &V) {
+  int maxI = -1;
+  int maxV = -1;
+  for (int i: V) {
+    freq1[i]++;
+    if (freq1[i] > maxV) {
+      maxV = freq1[i];
+      maxI = i;
     }
 
-    if (stk.top() != cur) {
-      stk.pop();
-      continue;
-    }
-
-    stk.push(cur);
+  return (maxV > (V.size()/2)) ? maxI : INT_MIN;
   }
-
-  if (stk.empty()) return -1000000001;
-
-  int cand = stk.top();
-  int count = 0;
-  for (int i = start; i < end; ++i) {
-    if (V[i]==cand) count++;
-  }
-  return (count > ((end-start) / 2)) ? cand : -1000000001;
 }
 
+
+
 int solution(vector<int> &A) {
+  int ldr = buildMap(A);
+
+  if (ldr == INT_MIN) return 0;
+
   int count = 0;
-  for (int i = 0; i < A.size()-1; ++i) {
-    int l1 = getLeader(A,0,i+1);
-    int l2 = getLeader(A, i+1, A.size());
-    if (l1 < -1000000000 || l2 < -1000000000) continue;
-    if (getLeader(A,0,i+1) == getLeader(A,i+1, A.size())) count++;
+
+  freq2[A[0]]++;
+  freq1[A[0]]--;
+
+  int leftSize = 1;
+  int rightSize = A.size()-1;
+  while (leftSize < A.size()) {
+    bool rightLeader = freq1[ldr] > (rightSize/2);
+    bool leftLeader = freq2[ldr] > (leftSize/2);
+    if (rightLeader && leftLeader) count++;
   }
+
   return count;
 }
 
@@ -97,7 +94,6 @@ int main() {
   vector<int> test = {};
 
   vector<int> testLeader = {4,3,4,4,4,2};
-  cout << "expect 4 " << getLeader(testLeader,0,1) <<endl;
 }
 
 /*
@@ -110,4 +106,16 @@ but this is not good enough - b/c it is still n^2
 if we sort items
 then at each step it is nlogn for an pop/push
 priority queue sorted by frequency
+
+new idea:
+- use the stack method with sliding window
+
+- since this is an easy - i am assuming there is some simplification that can be assumed
+- like the leader of the entire array will show up in either of the subarrays
+
+- first get the leader using freq map
+  - split into 2 freq maps
+  - increase freq appropriately for the growing subarray
+  - decrease freq appropriately for the shrinking subarray
+  - only checking freq map - check if leader is still leader (freq[leader] / substring length)
 */
