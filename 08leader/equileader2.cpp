@@ -48,6 +48,7 @@ each element of array A is an integer within the range [−1,000,000,000..1,000,
 #include <vector>
 #include <iostream>
 #include <unordered_map>
+#include <limits.h>
 
 using namespace std;
 
@@ -62,9 +63,8 @@ int buildMap(vector<int> &V) {
       maxV = freq1[i];
       maxI = i;
     }
-
-  return (maxV > (V.size()/2)) ? maxI : INT_MIN;
   }
+    return (maxV > (V.size()/2)) ? maxI : INT_MIN;
 }
 
 
@@ -84,16 +84,16 @@ int solution(vector<int> &A) {
   while (leftSize < A.size()) {
     bool rightLeader = freq1[ldr] > (rightSize/2);
     bool leftLeader = freq2[ldr] > (leftSize/2);
+
     if (rightLeader && leftLeader) count++;
+
+    leftSize++;
+    rightSize--;
+    freq2[A[leftSize-1]]++;
+    freq1[A[leftSize-1]]--;
   }
 
   return count;
-}
-
-int main() {
-  vector<int> test = {};
-
-  vector<int> testLeader = {4,3,4,4,4,2};
 }
 
 /*
