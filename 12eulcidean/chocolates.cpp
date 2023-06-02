@@ -45,7 +45,7 @@ int solution(int N, int M) {
 
   int cur = 0;
   bool start = false;
-  int count = 1;
+  int count = 0;
   int period = N / M;
   int interval = period * M;
   while (true) {
@@ -57,7 +57,10 @@ int solution(int N, int M) {
     count += period;
     cur += interval;
 
-    if (cur < N) cur += M;
+    if (cur < N) {
+      cur += M;
+      if (count!=N) count++;
+    }
 
     if (cur >= N) {
       cur = cur % N;
