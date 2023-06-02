@@ -1,10 +1,43 @@
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
 int solution(int M, vector<int> &A) {
+  vector<pair<int,int>> slices;
+  vector<bool> lookup(M, false);
+  int low = 0;
+  int high = 0;
+  while (high < A.size() && low < A.size()) {
+    int next = A[high];
+    if (lookup[next]) {
+      // duplicate case
+      // add low and high to slices, find next unique slice
+      slices.push_back({low,high-1});
+      while (A[low] != next) {
+        lookup[low] = false;
+        low++;
+      }
+      // one more
+      lookup[low] = false;
+      low++;
+    } else {
+      high++;
+      lookup[next] = true;
+    }
+  }
+  // check slices
+  for (auto slice: slices) {
+    cout << "slice is " << slice.first << " , " << slice.second << endl;
+  }
+  return 1;
 }
 
+int main () {
+vector<int> test1 = {3,4,5,5,2};
+int test1R = solution(6,test1);
+return 0;
+}
 /*
 
 An integer M and a non-empty array A consisting of N non-negative integers are given. All integers in array A are less than or equal to M.
