@@ -45,12 +45,10 @@ int solution(int N, int M) {
 
   int cur = 0;
   bool start = false;
-  int iterations = 0;
   int count = 1;
   int period = N / M;
   int interval = period * M;
-  while (iterations < 200) {
-    iterations++;
+  while (true) {
     if ((cur == 0 || cur == N) && start) {
       return count;
     }
@@ -64,7 +62,6 @@ int solution(int N, int M) {
     if (cur >= N) {
       cur = cur % N;
     }
-    iterations++;
   }
 
   return count;
