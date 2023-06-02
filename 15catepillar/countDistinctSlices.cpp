@@ -1,48 +1,68 @@
-#include <vector>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 int solution(int M, vector<int> &A) {
-  vector<pair<int,int>> slices;
+  vector<pair<int, int>> slices;
   vector<bool> lookup(M, false);
+  int sz = A.size();
   int low = 0;
   int high = 0;
-  while (high < A.size() && low < A.size()) {
+  while (high < sz && low < sz) {
     int next = A[high];
     if (lookup[next]) {
       // duplicate case
       // add low and high to slices, find next unique slice
-      slices.push_back({low,high-1});
-      while (A[low] != next) {
-        lookup[low] = false;
+      slices.push_back({low, high - 1});
+      while (low <= high && A[low] != next) {
+        lookup[A[low]] = false;
         low++;
       }
-      // one more
-      lookup[low] = false;
       low++;
+      if (low >= high) {
+        low = high;
+        lookup[A[low]] = false;
+      }
+
     } else {
       high++;
       lookup[next] = true;
     }
   }
+  slices.push_back({min(low,sz-1), min(high,sz-1)});
+
+  int tally = 0;
   // check slices
-  for (auto slice: slices) {
-    cout << "slice is " << slice.first << " , " << slice.second << endl;
+  int prevMax;
+  for (int i = 0; i < slices.size(); ++i) {
+    auto sl = slices[i];
+    if (i != 0) {
+      if (prevMax > sl.first) {
+      }
+    }
+    int spread = sl.second-sl.first;
+    int summed = (spread+1)*spread/2;
+    tally+=summed;
+    prevMax = sl.second;
   }
-  return 1;
+  return tally;
 }
 
-int main () {
-vector<int> test1 = {3,4,5,5,2};
-int test1R = solution(6,test1);
-return 0;
+int main() {
+  vector<int> test1 = {3, 4, 5, 5, 2};
+  int test1R = solution(6, test1);
+  return 0;
 }
 /*
 
-An integer M and a non-empty array A consisting of N non-negative integers are given. All integers in array A are less than or equal to M.
+An integer M and a non-empty array A consisting of N non-negative integers are
+given. All integers in array A are less than or equal to M.
 
-A pair of integers (P, Q), such that 0 ≤ P ≤ Q < N, is called a slice of array A. The slice consists of the elements A[P], A[P + 1], ..., A[Q]. A distinct slice is a slice consisting of only unique numbers. That is, no individual number occurs more than once in the slice.
+A pair of integers (P, Q), such that 0 ≤ P ≤ Q < N, is called a slice of array
+A. The slice consists of the elements A[P], A[P + 1], ..., A[Q]. A distinct
+slice is a slice consisting of only unique numbers. That is, no individual
+number occurs more than once in the slice.
 
 For example, consider integer M = 6 and array A such that:
 
@@ -51,7 +71,8 @@ For example, consider integer M = 6 and array A such that:
     A[2] = 5
     A[3] = 5
     A[4] = 2
-There are exactly nine distinct slices: (0, 0), (0, 1), (0, 2), (1, 1), (1, 2), (2, 2), (3, 3), (3, 4) and (4, 4).
+There are exactly nine distinct slices: (0, 0), (0, 1), (0, 2), (1, 1), (1, 2),
+(2, 2), (3, 3), (3, 4) and (4, 4).
 
 The goal is to calculate the number of distinct slices.
 
@@ -59,9 +80,11 @@ Write a function:
 
 int solution(int M, vector<int> &A);
 
-that, given an integer M and a non-empty array A consisting of N integers, returns the number of distinct slices.
+that, given an integer M and a non-empty array A consisting of N integers,
+returns the number of distinct slices.
 
-If the number of distinct slices is greater than 1,000,000,000, the function should return 1,000,000,000.
+If the number of distinct slices is greater than 1,000,000,000, the function
+should return 1,000,000,000.
 
 For example, given integer M = 6 and array A such that:
 
