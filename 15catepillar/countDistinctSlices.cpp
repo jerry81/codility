@@ -20,31 +20,37 @@ int solution(int M, vector<int> &A) {
         low++;
       }
       low++;
-      if (low >= high) {
-        low = high;
-        lookup[A[low]] = false;
-      }
-
+      high++;
     } else {
       high++;
       lookup[next] = true;
     }
   }
-  slices.push_back({min(low,sz-1), min(high,sz-1)});
+  slices.push_back({min(low, sz - 1), min(high, sz - 1)});
 
   int tally = 0;
   // check slices
-  int prevMax;
   for (int i = 0; i < slices.size(); ++i) {
     auto sl = slices[i];
+
     if (i != 0) {
-      if (prevMax > sl.first) {
+      int llim = sl.first;
+      for (int j = 1; (i-j) >= 0; ++j) {
+        // subtract first found spread
+        auto slcmp = slices[i-j];
+        int ulim = slcmp.second;
+        int spread = ulim - llim;
+        if (spread >= 0) {
+          spread++;
+          tally -= (spread + 1) * spread / 2;
+          break;
+        }
       }
     }
-    int spread = sl.second-sl.first;
-    int summed = (spread+1)*spread/2;
-    tally+=summed;
-    prevMax = sl.second;
+    int spread = sl.second - sl.first;
+    spread++;
+    int summed = (spread + 1) * spread / 2;
+    tally += summed;
   }
   return tally;
 }
@@ -52,6 +58,14 @@ int solution(int M, vector<int> &A) {
 int main() {
   vector<int> test1 = {3, 4, 5, 5, 2};
   int test1R = solution(6, test1);
+  cout << "expect 9: " << test1R << endl;
+  vector<int> test2 = {3, 5, 4, 4, 5, 2};
+  int test2R = solution(6, test2);
+  cout << "expect 12: " << test2R << endl;
+  vector<int> test3 = {3, 5, 2, 4, 5, 2};
+  int test3R = solution(6, test3);
+  cout << "expect 16: " << test3R << endl;
+
   return 0;
 }
 /*
